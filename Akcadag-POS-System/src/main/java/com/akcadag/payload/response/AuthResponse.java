@@ -8,5 +8,5 @@ public class AuthResponse {
     private String jwt;
     private String message;
    // private String title;
-    private UserDto userDto;
+    private UserDto user;
 }
