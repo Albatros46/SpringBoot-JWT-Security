@@ -20,12 +20,13 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private UserRepository userRepository;
+    private final  UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
     private final CustomUserImpl customUserImpl;
@@ -119,6 +120,14 @@ public class AuthServiceImpl implements AuthService {
         authResponse.setUser(UserMapper.toDTO(user));
 
         return authResponse;
+    }
+
+    @Override
+    public List<UserDto> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(UserMapper::toDTO) // Eğer MapStruct veya kendi mapper’ınız varsa
+                .toList();
     }
 
     /**

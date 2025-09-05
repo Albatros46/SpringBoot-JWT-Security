@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
